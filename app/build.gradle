@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.sevenzerotwo.takeit'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.sevenzerotwo.takeit"
         minSdk 28
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -60,4 +60,6 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.28.0"
+
 }
