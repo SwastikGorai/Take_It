@@ -13,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.sevenzerotwo.takeit.pages.Authpage
+import com.sevenzerotwo.takeit.pages.AuthPage1
+import com.sevenzerotwo.takeit.pages.AuthVerify
+import com.sevenzerotwo.takeit.pages.Authpage22
 import com.sevenzerotwo.takeit.ui.theme.TakeItTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,7 +39,7 @@ class MainActivity : ComponentActivity() {
                         )
 
                 }
-                Authpage()
+                AuthVerify().createAccount()
             }
         }
     }
