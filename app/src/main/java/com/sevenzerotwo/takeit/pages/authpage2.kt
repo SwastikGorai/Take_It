@@ -1,6 +1,7 @@
 package com.sevenzerotwo.takeit.pages
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,12 +11,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.node.ModifierNodeElement
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
@@ -34,14 +37,16 @@ import com.sevenzerotwo.takeit.R
 
 class Authpage22 {
 
-    var flag = 0
+    val onklik = mutableStateOf(false)
     @Preview
     @Composable
     fun Authpage2() {
 
+        val context = LocalContext.current
 
-        val eml = "swas@gmail.com"
-        val pass = "12345678"
+        val classAuthVerify = AuthVerify()
+
+
         Scaffold(
             Modifier
                 .fillMaxSize()
@@ -137,7 +142,7 @@ class Authpage22 {
                         }
 
                         Button(
-                            onClick = { flag = 1},
+                            onClick = {classAuthVerify.createAccount(context)},
                             border = BorderStroke(1.dp, Color.Gray),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -145,6 +150,8 @@ class Authpage22 {
                             colors = ButtonDefaults.buttonColors(containerColor = Color.White),
                             shape = RoundedCornerShape(50)
                         )
+
+
                         {
                             Row(
                                 Modifier.fillMaxSize(),
@@ -166,6 +173,7 @@ class Authpage22 {
                             }
 //
                         }
+
 
 
                     }
@@ -199,14 +207,16 @@ class Authpage22 {
 
                     }
 
+
+
                 }
             }
 
         }
 
-        if (flag == 1) {
-        AuthVerify().createAccount() }
     }
+
+
 
 }
 

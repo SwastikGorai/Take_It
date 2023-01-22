@@ -16,6 +16,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sevenzerotwo.takeit.pages.AuthPage1
 import com.sevenzerotwo.takeit.pages.AuthVerify
 import com.sevenzerotwo.takeit.pages.Authpage22
+import com.sevenzerotwo.takeit.pages.signinEmail
 import com.sevenzerotwo.takeit.ui.theme.TakeItTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         )
 
                 }
-                AuthVerify().createAccount()
+                signinEmail().emailloginpage()
             }
         }
     }
