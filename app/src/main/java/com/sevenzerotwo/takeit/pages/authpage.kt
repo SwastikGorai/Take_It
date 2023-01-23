@@ -2,7 +2,6 @@ package com.sevenzerotwo.takeit.pages
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -10,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -24,10 +22,13 @@ import com.sevenzerotwo.takeit.R
 
 
 class AuthPage1 {
+
+    val func = funktions()
+
     @Preview
     @Composable
     fun Authpage() {
-        Scaffold(Modifier.fillMaxSize()) {padding->
+        Scaffold(Modifier.fillMaxSize()) { padding ->
 
             Column(
                 Modifier
@@ -95,25 +96,9 @@ class AuthPage1 {
                 ) {
                     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceEvenly)
                     {
-                        Button(
-                            onClick = { },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(60.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
-                            shape = RoundedCornerShape(24)
-                        )
-                        {
-                            Text(
-                                text = "Sign In",
-                                color = Color.White,
-                                textAlign = TextAlign.Center,
-                                lineHeight = 125.sp,
-                                style = TextStyle(
-                                    fontSize = 18.sp
-                                )
-                            )
-                        }
+
+
+                        func.signinbutton("Sign In")
 
                         Button(
                             onClick = { },

@@ -1,11 +1,6 @@
 package com.sevenzerotwo.takeit.pages
 
-import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
@@ -13,13 +8,12 @@ import androidx.compose.ui.platform.LocalContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-class AuthVerify :  ComponentActivity() {
+
+class AuthVerify : ComponentActivity() {
     private lateinit var auth: FirebaseAuth
 
 
-
-
-    fun createAccount(context : Context) {
+    fun createAccount(context: Context) {
         auth = Firebase.auth
         Toast.makeText(context, "called createaccount", Toast.LENGTH_LONG).show()
         val classAuth22 = Authpage22()

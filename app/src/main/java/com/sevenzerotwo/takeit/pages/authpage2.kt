@@ -1,14 +1,10 @@
 package com.sevenzerotwo.takeit.pages
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -16,21 +12,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.sevenzerotwo.takeit.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,9 +27,12 @@ import com.sevenzerotwo.takeit.R
 class Authpage22 {
 
     val onklik = mutableStateOf(false)
+
     @Preview
     @Composable
     fun Authpage2() {
+
+        val func = funktions()
 
         val context = LocalContext.current
 
@@ -51,12 +43,13 @@ class Authpage22 {
             Modifier
                 .fillMaxSize()
                 .padding(2.dp)
-        ) {padding ->
+        ) { padding ->
 
             Column(
                 Modifier
                     .fillMaxSize()
-                    .padding(8.dp)) {
+                    .padding(8.dp)
+            ) {
 
 
                 Box(
@@ -111,7 +104,7 @@ class Authpage22 {
                         Spacer(modifier = Modifier.height(12.dp))
 
                         Button(
-                            onClick = {  },
+                            onClick = { },
                             border = BorderStroke(1.dp, Color.Gray),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -142,7 +135,7 @@ class Authpage22 {
                         }
 
                         Button(
-                            onClick = {classAuthVerify.createAccount(context)},
+                            onClick = { classAuthVerify.createAccount(context) },
                             border = BorderStroke(1.dp, Color.Gray),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -175,7 +168,6 @@ class Authpage22 {
                         }
 
 
-
                     }
                 }
 
@@ -185,37 +177,13 @@ class Authpage22 {
                         .fillMaxSize()
                 )
                 {
-                    Row(
-                        Modifier.fillMaxSize(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    )
-                    {
-                        Text(
-                            text = "Already have an account? ", fontSize = 16.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold
-                        )
-
-                        Text(
-                            text = "Sign In", fontSize = 16.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold,
-                            textDecoration = TextDecoration.Underline,
-                            modifier = Modifier.clickable { })
-
-
-                    }
-
-
-
+                    func.accountPresent(siz = 16.sp)
                 }
             }
 
         }
 
     }
-
 
 
 }
