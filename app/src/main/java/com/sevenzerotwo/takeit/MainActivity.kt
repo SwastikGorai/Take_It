@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.sevenzerotwo.takeit.Navigation.NavGraph
 import com.sevenzerotwo.takeit.pages.AuthPage1
 import com.sevenzerotwo.takeit.pages.AuthVerify
 import com.sevenzerotwo.takeit.pages.Authpage22
@@ -23,25 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TakeItTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                }
-
-
-                val systemUiController = rememberSystemUiController()
-                SideEffect {
-                        systemUiController.setStatusBarColor(
-                            color = Color.White,
-                            darkIcons = true
-                        )
-
-                }
-                signinEmail().emailloginpage()
-            }
+            NavGraph().Navigation()
         }
     }
 }
