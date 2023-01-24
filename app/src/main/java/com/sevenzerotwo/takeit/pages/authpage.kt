@@ -16,6 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.sevenzerotwo.takeit.Navigation.screen
 import com.sevenzerotwo.takeit.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,7 +29,7 @@ class AuthPage1 {
 
     @Preview
     @Composable
-    fun Authpage() {
+    fun Authpage(navController: NavController) {
         Scaffold(Modifier.fillMaxSize()) { padding ->
 
             Column(
@@ -101,7 +103,7 @@ class AuthPage1 {
                         func.signinbutton("Sign In")
 
                         Button(
-                            onClick = { },
+                            onClick = { navController.navigate(screen.SignUpScreen.route)},
                             border = BorderStroke(1.dp, Color.Black),
                             modifier = Modifier
                                 .fillMaxWidth()

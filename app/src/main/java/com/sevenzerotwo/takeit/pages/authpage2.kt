@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.sevenzerotwo.takeit.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,7 +31,7 @@ class Authpage22 {
 
     @Preview
     @Composable
-    fun Authpage2() {
+    fun Authpage2(navController: NavController) {
 
         val func = funktions()
 
