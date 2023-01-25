@@ -29,7 +29,7 @@ class Authpage22 {
 
     val onklik = mutableStateOf(false)
 
-    @Preview
+
     @Composable
     fun Authpage2(navController: NavController) {
 

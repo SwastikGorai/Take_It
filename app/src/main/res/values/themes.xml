@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.TakeIt" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="SplashScreen" parent="Theme.TakeIt">
+        <item name="android:windowSplashScreenAnimatedIcon"> @drawable/pudding</item>
+
+        <item name="android:windowSplashScreenBackground">#ffffff</item>
+
+        <item name="android:windowSplashScreenAnimationDuration">2000</item>
+
+    </style>
 </resources>
