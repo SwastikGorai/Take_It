@@ -76,17 +76,17 @@ class signup22 {
 
 
                         // Box for Email TextBox
-                        emaill = func.templatee(text = "Email")
+                        emaill = func.templatee(text = "Email", mode = "email")
                         //End for Box For Email TextBox
 
 
                         //Box for Create Password TextBox
-                        passd = func.templatee( text = "Create a Password")
+                        passd = func.templatee( text = "Create a Password",  mode = "password")
                         //End for Box For Create Password Button
 
 
                         //Box for Confirm Password TextBox
-                        confirmpassd = func.templatee( text = "Confirm Password")
+                        confirmpassd = func.templatee( text = "Confirm Password",  mode = "password")
                         //End for Box For Confirm Password TextBox
 
 

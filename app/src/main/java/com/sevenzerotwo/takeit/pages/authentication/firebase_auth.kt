@@ -8,34 +8,28 @@ import androidx.compose.ui.platform.LocalContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.security.KeyStore.PasswordProtection
 
 class AuthVerify : ComponentActivity() {
     private lateinit var auth: FirebaseAuth
 
 
-    fun createAccount(context: Context, email : String, password :String) {
+    fun createAccount(context: Context, email: String, password: String) {
         auth = Firebase.auth
+
         Toast.makeText(context, "called createaccount", Toast.LENGTH_LONG).show()
-//        val classAuth22 = signup22()
-//        val emaill = "swas@gmail.com"
-//        val passd = "12345678"
-        // [START create_user_with_email]
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-//                    classAuth22.onklik.value = false
 
                     Toast.makeText(context, "Sign In Successfully", Toast.LENGTH_LONG).show()
 
 
                 } else {
-//                    classAuth22.onklik.value = false
                     Toast.makeText(context, "Sign In NOT Successfully", Toast.LENGTH_LONG).show()
 
                 }
             }
-        // [END create_user_with_email]
     }
 
 
