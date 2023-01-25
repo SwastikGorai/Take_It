@@ -1,5 +1,6 @@
-package com.sevenzerotwo.takeit.pages
+package com.sevenzerotwo.takeit.pages.funksionss
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -8,6 +9,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,6 +22,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import com.sevenzerotwo.takeit.Navigation.screen
+import com.sevenzerotwo.takeit.pages.AuthVerify
 
 class funktions {
 
@@ -44,8 +51,10 @@ class funktions {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun templatee(textboxValue: String, text: String) {
-        var vall = textboxValue
+    fun templatee(text: String) : String
+    {
+        var vall = remember { mutableStateOf("") }
+
         Box(
             Modifier
                 .fillMaxWidth()
@@ -55,8 +64,8 @@ class funktions {
 
                 Text(text = text)
                 TextField(
-                    value = vall,
-                    onValueChange = { vall = it },
+                    value = vall.value,
+                    onValueChange = { vall.value = it },
                     Modifier
                         .fillMaxWidth()
                         .padding(top = 4.dp),
@@ -79,14 +88,15 @@ class funktions {
             }
 
         }
+        return vall.value
     }
 
 
     //Sign In Button
     @Composable
-    fun signinbutton(button_text: String) {
+    fun signbutton(button_text: String,navController : NavController, navTo  : String) {
         Button(
-            onClick = { },
+            onClick = {navController.navigate(navTo) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp),
@@ -107,6 +117,55 @@ class funktions {
     }
 
 
+    @Composable
+    fun authsignbutton(button_text: String, mode : String, context : Context, email : String, password : String, confrimpassd : String?) {
+        val classAuthVerify = AuthVerify()
+        if (mode == "signup") {
+            Button(
+                onClick = { classAuthVerify.createAccount(context, email, password) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
+                shape = RoundedCornerShape(24)
+            )
+            {
+                Text(
+                    text = button_text,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 125.sp,
+                    style = TextStyle(
+                        fontSize = 18.sp
+                    )
+                )
+            }
+        }
+//        else if(mode == "signin")
+//        {
+//            Button(
+//                onClick = { classAuthVerify.createAccount(context, email, password) },
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(60.dp),
+//                colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
+//                shape = RoundedCornerShape(24)
+//            )
+//            {
+//                Text(
+//                    text = button_text,
+//                    color = Color.White,
+//                    textAlign = TextAlign.Center,
+//                    lineHeight = 125.sp,
+//                    style = TextStyle(
+//                        fontSize = 18.sp
+//                    )
+//                )
+//            }
+//        }
+    }
+
+
     //Already have an account, Sign In
     @Composable
     fun accountPresent(siz: TextUnit) {
@@ -122,6 +181,31 @@ class funktions {
                 )
 
             Text(text = "Sign In",
+                fontSize = siz,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                textDecoration = TextDecoration.Underline,
+                modifier = Modifier.clickable { })
+
+
+        }
+    }
+
+
+    @Composable
+    fun NoAccountPresent(siz: TextUnit) {
+        Row(
+            Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Don't have an account? ", fontSize = siz,
+                color = Color.Black,
+
+                )
+
+            Text(text = "Sign Up",
                 fontSize = siz,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,

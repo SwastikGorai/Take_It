@@ -7,23 +7,25 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sevenzerotwo.takeit.R
+import com.sevenzerotwo.takeit.pages.funksionss.funktions
 
-class signinEmail {
+class signup22 {
 
     val func = funktions()
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
-    @Preview
     @Composable
-    fun emailloginpage(navController: NavController) {
+    fun emailsignuppage(navController: NavController) {
+
+        val context = LocalContext.current
 
         var emaill by remember { mutableStateOf("") }
 
@@ -74,17 +76,17 @@ class signinEmail {
 
 
                         // Box for Email TextBox
-                        func.templatee(textboxValue = emaill, text = "Email")
+                        emaill = func.templatee(text = "Email")
                         //End for Box For Email TextBox
 
 
                         //Box for Create Password TextBox
-                        func.templatee(textboxValue = passd, text = "Create a Password")
+                        passd = func.templatee( text = "Create a Password")
                         //End for Box For Create Password Button
 
 
                         //Box for Confirm Password TextBox
-                        func.templatee(textboxValue = confirmpassd, text = "Confirm Password")
+                        confirmpassd = func.templatee( text = "Confirm Password")
                         //End for Box For Confirm Password TextBox
 
 
@@ -92,7 +94,14 @@ class signinEmail {
 
 
                         //Box for Login Button
-                        func.signinbutton(button_text = "Login In")
+                        func.authsignbutton(
+                            button_text = "Sign Up",
+                            mode = "signup" ,
+                            context = context  ,
+                            email = emaill ,
+                            password = passd ,
+                            confrimpassd = confirmpassd
+                        )
                         //End for Box For Login Button
 
 

@@ -1,5 +1,4 @@
 package com.sevenzerotwo.takeit.pages
-
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,19 +16,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.sevenzerotwo.takeit.Navigation.screen
 import com.sevenzerotwo.takeit.R
+import com.sevenzerotwo.takeit.pages.funksionss.funktions
 
 @OptIn(ExperimentalMaterial3Api::class)
 
-class Authpage22 {
+class signin11 {
 
     val onklik = mutableStateOf(false)
 
-    @Preview
     @Composable
     fun Authpage2(navController: NavController) {
 
@@ -136,7 +135,7 @@ class Authpage22 {
                         }
 
                         Button(
-                            onClick = { classAuthVerify.createAccount(context) },
+                            onClick = { navController.navigate(screen.SignInScreen2.route) },
                             border = BorderStroke(1.dp, Color.Gray),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -178,7 +177,7 @@ class Authpage22 {
                         .fillMaxSize()
                 )
                 {
-                    func.accountPresent(siz = 16.sp)
+                    func.NoAccountPresent(siz = 16.sp)
                 }
             }
 
@@ -188,5 +187,4 @@ class Authpage22 {
 
 
 }
-
 

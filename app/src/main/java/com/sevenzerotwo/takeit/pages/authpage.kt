@@ -13,12 +13,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sevenzerotwo.takeit.Navigation.screen
 import com.sevenzerotwo.takeit.R
+import com.sevenzerotwo.takeit.pages.funksionss.funktions
 
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -27,7 +27,6 @@ class AuthPage1 {
 
     val func = funktions()
 
-    @Preview
     @Composable
     fun Authpage(navController: NavController) {
         Scaffold(Modifier.fillMaxSize()) { padding ->
@@ -99,11 +98,13 @@ class AuthPage1 {
                     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceEvenly)
                     {
 
+                        //Sign In Button
+                        func.signbutton("Sign In", navController, screen.SignInScreen1.route )
+                        // End of Sign In Button
 
-                        func.signinbutton("Sign In")
 
                         Button(
-                            onClick = { navController.navigate(screen.SignUpScreen.route)},
+                            onClick = { navController.navigate(screen.SignUpScreen1.route)},
                             border = BorderStroke(1.dp, Color.Black),
                             modifier = Modifier
                                 .fillMaxWidth()
