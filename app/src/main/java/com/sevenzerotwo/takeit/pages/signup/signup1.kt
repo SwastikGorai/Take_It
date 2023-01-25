@@ -177,7 +177,7 @@ class signup11 {
                         .fillMaxSize()
                 )
                 {
-                    func.accountPresent(siz = 16.sp)
+                    func.accountPresent(siz = 16.sp, navController)
                 }
             }
 

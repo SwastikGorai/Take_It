@@ -146,7 +146,7 @@ class signup22 {
                                 .fillMaxWidth()
                                 .fillMaxHeight(0.25F)
                         ) {
-                            func.accountPresent(siz = 12.sp)
+                            func.accountPresent(siz = 12.sp, navController)
                         }
                         // End of Box for Already have an account Sign in
                     }

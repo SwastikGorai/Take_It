@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,6 +23,8 @@ class signin22 {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun emailsigninpage(navController: NavController) {
+
+        val context = LocalContext.current
 
         var emaill by remember { mutableStateOf("") }
 
@@ -49,7 +52,7 @@ class signin22 {
 
 
                 Text(
-                    text = "Sign Up",
+                    text = "Sign In",
                     Modifier.padding(12.dp),
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 40.sp,
@@ -72,30 +75,32 @@ class signin22 {
 
 
                         // Box for Email TextBox
-//                        func.templatee(textboxValue = emaill, text = "Email", )
+                        emaill = func.templatee( text = "Email",  mode = "email")
                         //End for Box For Email TextBox
 
 
                         //Box for Create Password TextBox
-//                        func.templatee(textboxValue = passd, text = "Create a Password")
+                        passd = func.templatee( text = "Password",  mode = "password")
                         //End for Box For Create Password Button
-
-
-                        //Box for Confirm Password TextBox
-//                        func.templatee(textboxValue = confirmpassd, text = "Confirm Password")
-                        //End for Box For Confirm Password TextBox
 
 
                         Spacer(modifier = Modifier.height(8.dp))
 
 
                         //Box for Login Button
-//                        func.authsignbutton(button_text = "Sign Up")
+                      func.authsignbutton(
+                            button_text = "Sign In",
+                            mode = "signin" ,
+                            context = context  ,
+                            email = emaill ,
+                            password = passd ,
+                            confrimpassd = ""
+                        )
                         //End for Box For Login Button
 
 
                         Text(
-                            text = "--------  Or Register with  --------",
+                            text = "--------  Or Sign in with  --------",
                             fontSize = 12.sp,
                             lineHeight = 125.sp
                         )
@@ -135,7 +140,7 @@ class signin22 {
                                 .fillMaxWidth()
                                 .fillMaxHeight(0.25F)
                         ) {
-                            func.NoAccountPresent(siz = 12.sp)
+                            func.NoAccountPresent(siz = 12.sp, navController)
                         }
                         // End of Box for Already have an account Sign in
                     }

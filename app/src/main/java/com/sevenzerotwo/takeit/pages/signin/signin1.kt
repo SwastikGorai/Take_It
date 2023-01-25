@@ -177,7 +177,7 @@ class signin11 {
                         .fillMaxSize()
                 )
                 {
-                    func.NoAccountPresent(siz = 16.sp)
+                    func.NoAccountPresent(siz = 16.sp, navController)
                 }
             }
 

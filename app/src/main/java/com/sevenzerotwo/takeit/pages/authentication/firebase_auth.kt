@@ -33,12 +33,10 @@ class AuthVerify : ComponentActivity() {
     }
 
 
-    @Composable
-    private fun signIn(email: String, password: String) {
-        var emaill = "swas@gmail.com"
-        var passd = "12345678"
-        val context = LocalContext.current
-        // [START sign_in_with_email]
+    fun signIn(context : Context, email: String, password: String) {
+        auth = Firebase.auth
+        Toast.makeText(context, "called signin method", Toast.LENGTH_LONG).show()
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -49,6 +47,5 @@ class AuthVerify : ComponentActivity() {
 
                 }
             }
-        // [END sign_in_with_email]
     }
 }

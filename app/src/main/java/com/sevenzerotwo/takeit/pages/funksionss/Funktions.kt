@@ -64,8 +64,6 @@ class funktions {
 
         var isPassVis = remember { mutableStateOf(false) }
 
-        var icnsPassVis = remember { mutableStateOf(false) }
-
         var vall = remember { mutableStateOf("") }
 
         Box(
@@ -103,9 +101,9 @@ class funktions {
 
                     Text(text = text)
                     TextField(modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(top = 4.dp),
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp),
                         value = vall.value,
                         onValueChange = { vall.value = it },
                         keyboardOptions = KeyboardOptions(
@@ -198,9 +196,8 @@ class funktions {
         }
         else if(mode == "signin")
         {
-
             Button(
-                onClick = { classAuthVerify.createAccount(context, email, password) },
+                onClick = { classAuthVerify.signIn(context, email = email, password = password ) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp),
@@ -224,7 +221,7 @@ class funktions {
 
     //Already have an account, Sign In
     @Composable
-    fun accountPresent(siz: TextUnit) {
+    fun accountPresent(siz: TextUnit, navController: NavController) {
         Row(
             Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
@@ -241,7 +238,7 @@ class funktions {
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
                 textDecoration = TextDecoration.Underline,
-                modifier = Modifier.clickable { })
+                modifier = Modifier.clickable { navController.navigate(screen.SignInScreen1.route)})
 
 
         }
@@ -249,7 +246,7 @@ class funktions {
 
 
     @Composable
-    fun NoAccountPresent(siz: TextUnit) {
+    fun NoAccountPresent(siz: TextUnit, navController: NavController) {
         Row(
             Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
@@ -266,7 +263,7 @@ class funktions {
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
                 textDecoration = TextDecoration.Underline,
-                modifier = Modifier.clickable { })
+                modifier = Modifier.clickable { navController.navigate(screen.SignUpScreen1.route) })
 
 
         }
