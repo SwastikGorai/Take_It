@@ -60,8 +60,6 @@ class signup22 {
                 )
                 //End for Box for star and Big Sign Up text
 
-
-                // Box for Email, Create Password and Confirm Password TextBox
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -95,6 +93,7 @@ class signup22 {
 
                         //Box for Login Button
                         func.authsignbutton(
+                            navController = navController,
                             button_text = "Sign Up",
                             mode = "signup" ,
                             context = context  ,

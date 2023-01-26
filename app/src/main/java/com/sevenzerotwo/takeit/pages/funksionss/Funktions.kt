@@ -27,6 +27,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -67,20 +68,21 @@ class funktions {
         var vall = remember { mutableStateOf("") }
 
         Box(
-            Modifier
-                .fillMaxWidth()
+            modifier =  Modifier.fillMaxWidth()
         )
         {
-            if(mode == "email") {
+            if(mode == "email" || mode == "address" || mode == "name") {
+                var modifier : Modifier =  Modifier.fillMaxWidth().padding(top = 4.dp)
+                if (mode == "address") { modifier = Modifier.fillMaxWidth().padding(top = 4.dp).height(60.dp) }
+                if (mode == "name") { modifier = Modifier.padding(top = 4.dp) }
                 Column {
 
                     Text(text = text)
                     TextField(
                         value = vall.value,
                         onValueChange = { vall.value = it },
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(top = 4.dp),
+                        singleLine = false,
+                        modifier = modifier,
                         shape = RoundedCornerShape(16.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             disabledLabelColor = Color.White,
@@ -138,6 +140,65 @@ class funktions {
 
                 }
 
+            } else if(mode == "phonenumber") {
+                Column {
+
+                    Text(text = text)
+                    TextField(
+                        value = vall.value,
+                        onValueChange = { vall.value = it },
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Phone,
+                            imeAction = ImeAction.Done
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = TextFieldDefaults.textFieldColors(
+                            disabledLabelColor = Color.White,
+                            selectionColors = TextSelectionColors(
+                                handleColor = Color.Black,
+                                backgroundColor = Color.Gray
+                            ),
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent
+                        )
+
+                    )
+
+                }
+            } else if(mode == "pincode") {
+                val maxno = 6
+                Column {
+
+                    Text(text = text)
+                    TextField(
+                        value = vall.value,
+                        onValueChange = { if(vall.value.length <= maxno) vall.value = it },
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Done
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = TextFieldDefaults.textFieldColors(
+                            disabledLabelColor = Color.White,
+                            selectionColors = TextSelectionColors(
+                                handleColor = Color.Black,
+                                backgroundColor = Color.Gray
+                            ),
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent
+                        )
+
+                    )
+
+                }
             }
 
         }
@@ -171,11 +232,11 @@ class funktions {
 
 
     @Composable
-    fun authsignbutton(button_text: String, mode : String, context : Context, email : String, password : String, confrimpassd : String?) {
+    fun authsignbutton(navController: NavController,button_text: String, mode : String, context : Context, email : String, password : String, confrimpassd : String?) {
         val classAuthVerify = AuthVerify()
         if (mode == "signup") {
             Button(
-                onClick = { classAuthVerify.createAccount(context, email, password) },
+                onClick = { classAuthVerify.createAccount(navController,context, email, password) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp),
@@ -266,6 +327,31 @@ class funktions {
                 modifier = Modifier.clickable { navController.navigate(screen.SignUpScreen1.route) })
 
 
+        }
+    }
+
+
+    @Composable
+    fun accDetails(button_text: String, firstName : String, lastName : String, address : String, phnno : String, pin : String)
+    {
+        Button(
+            onClick = {/* TODO */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
+            shape = RoundedCornerShape(24)
+        )
+        {
+            Text(
+                text = button_text,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                lineHeight = 125.sp,
+                style = TextStyle(
+                    fontSize = 18.sp
+                )
+            )
         }
     }
 }

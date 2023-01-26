@@ -89,6 +89,7 @@ class signin22 {
 
                         //Box for Login Button
                       func.authsignbutton(
+                          navController = navController,
                             button_text = "Sign In",
                             mode = "signin" ,
                             context = context  ,

@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.sevenzerotwo.takeit.pages.AuthPage1
 import com.sevenzerotwo.takeit.pages.signin.signin22
 import com.sevenzerotwo.takeit.pages.signin11
+import com.sevenzerotwo.takeit.pages.signup.signup33
 //import com.sevenzerotwo.takeit.pages.Authpage22
 import com.sevenzerotwo.takeit.pages.signup11
 import com.sevenzerotwo.takeit.pages.signup22
@@ -25,6 +26,10 @@ class NavGraph {
             }
             composable(route = screen.SignUpScreen2.route){
                 signup22().emailsignuppage(navController = nav)
+            }
+
+            composable(route = screen.SignUpScreen3.route){
+                signup33().createAbout(navController = nav)
             }
 
             composable(route = screen.SignInScreen1.route){
